@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+   name: nginx-ingress1
+   annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+   rules:
+   - host: host.example.com
+     http:
+       paths:
+       - path: /api1
+         backend:
+            serviceName: strapi-back
+            servicePort: 1337
+       - path: /api2
+         backend:
+            serviceName: strapi-front
+            servicePort: 80
+

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strapi-db
+spec:
+  selector:
+    matchLabels:
+      component: db
+  template:
+    metadata:
+      labels:
+        component: db
+    spec:
+      containers:
+      - name: strapi-db
+        image: mysql:5.7
+        env:
+          - name: MYSQL_DATABASE
+            value: strapi
+          - name: MYSQL_USER
+            value: strapi
+          - name: MYSQL_PASSWORD
+            value: strapi
+          - name: MYSQL_ROOT_PASSWORD
+            value: strapi-admin
